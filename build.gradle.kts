@@ -37,7 +37,7 @@ buildscript {
 plugins {
   alias(libs.plugins.detekt)
   alias(libs.plugins.spotless) apply false
-  alias(libs.plugins.mavenPublish) apply false
+  alias(libs.plugins.mavenPublish)
   alias(libs.plugins.dokka) apply false
   alias(libs.plugins.ksp) apply false
   alias(libs.plugins.versionsPlugin)
@@ -88,7 +88,7 @@ allprojects {
 }
 
 /**
- * These are magic shared versions that are used in both buildSrc's build file and SlackDependencies. These are copied
+ * These are magic shared versions that are used in both buildSrc's build file and KameKamoDependencies. These are copied
  * as a source into the main source set and templated for replacement.
  */
 data class KotlinBuildConfig(val kotlin: String) {
@@ -226,11 +226,11 @@ subprojects {
 
     // Add our maven repository repo
     configure<PublishingExtension> {
-      val url = providers.gradleProperty("SlackRepositoryUrl")
+      val url = providers.gradleProperty("KameKamoRepositoryUrl")
         .get()
       repositories {
         maven {
-          name = "SlackRepository"
+          name = "KameKamoRepository"
           setUrl(url)
           credentials(PasswordCredentials::class.java)
         }

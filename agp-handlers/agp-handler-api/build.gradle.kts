@@ -2,7 +2,7 @@ plugins {
   kotlin("jvm")
 }
 
-if (hasProperty("SlackRepositoryUrl")) {
+if (hasProperty("KameKamoRepositoryUrl")) {
   apply(plugin = "com.vanniktech.maven.publish")
 }
 

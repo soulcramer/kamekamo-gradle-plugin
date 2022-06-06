@@ -1,43 +1,45 @@
-slack-gradle-plugin
+kamekamo-gradle-plugin (Fork of slack-gradle-plugin)
 ===================
 
-This repository contains the core Gradle plugin and associated logic used for Slack's Android app.
+For now this fork only change the name of the project as to test how it's working and how to integrate it to KameKamo's
+app.
 
-This repo is effectively _read-only_ and does not publish artifacts to Maven Central. We [develop
-these in the open](https://slack.engineering/developing-in-the-open/) to knowledge-share with the community.
+This repository contains the core Gradle plugin and associated logic used for KameKamo's Android app.
 
-As such, our issue tracker is closed and we don't normally accept external PRs, but we welcome your
-questions in the discussions section of the project!
+This repo is effectively _read-only_ and does not publish artifacts to Maven Central.
+We [develop these in the open](https://slack.engineering/developing-in-the-open/) to knowledge-share with the community.
 
-We may later publish some of these components. If you're interested in this, feel free to raise in
-a discussions post or vote for existing suggestions.
+As such, our issue tracker is closed and we don't normally accept external PRs, but we welcome your questions in the
+discussions section of the project!
+
+We may later publish some of these components. If you're interested in this, feel free to raise in a discussions post or
+vote for existing suggestions.
 
 ## Highlights
 
 ### Common project configuration
 
-The `slack.base` plugin offers common configuration for all projects implementing it, covering a
-wide spectrum of Android, Kotlin, and Java configurations.
+The `kamekamo.base` plugin offers common configuration for all projects implementing it, covering a wide spectrum of
+Android, Kotlin, and Java configurations.
 
 This includes a whole host of things!
 - Common Android configuration (single variant libraries, disabling unused features, compose, etc).
 - Common Kotlin configuration (freeCompilerArgs, JVM target, etc).
 - Common Java configuration (toolchains, release versions, etc).
 - Common annotation processors.
-- SlackExtension (see next section).
+- KameKamoExtension (see next section).
 - Formatting (via Spotless).
 - Platforms and BOM dependencies (see "Platform plugins" section below).
 - Common lint checks (both on Android and plain JVM projects).
 
 ### Feature DSL
 
-To ease use and configuration of common features in projects, we expose a `slack` DSL in projects
-that allows for configuration of these in a semantically easy and boilerplate-free way. This is
-controlled via `SlackExtension`.
+To ease use and configuration of common features in projects, we expose a `kamekamo` DSL in projects that allows for
+configuration of these in a semantically easy and boilerplate-free way. This is controlled via `KameKamoExtension`.
 
 ```kotlin
-slack {
-  features {
+kamekamo {
+    features {
     dagger()
     moshi(codegen = true)
   }
@@ -82,10 +84,9 @@ its advice to a project to automatically optimize it and _rake_ dependencies.
 
 ### Module Stats (aka "Mod Score")
 
-As a part of our modularization efforts, we developed a scoring mechanism for modules that we could
-use as a measure of their "modularization". This includes a number of metrics and weighs them in a
-formula to compute a score. This includes LoC, language mixtures, and build graph centrality. This
-logic is under the `slack.stats` package.
+As a part of our modularization efforts, we developed a scoring mechanism for modules that we could use as a measure of
+their "modularization". This includes a number of metrics and weighs them in a formula to compute a score. This includes
+LoC, language mixtures, and build graph centrality. This logic is under the `kamekamo.stats` package.
 
 ### Robolectric Jars Management
 
@@ -109,8 +110,8 @@ allow list of known permissions. This is allow list is checked in and expected t
 `CODEOWNERS` watch and will fail the build if they differ.
 
 ```kotlin
-slack {
-  android {
+kamekamo {
+    android {
     app {
       permissionAllowlist {
         if (name == "externalRelease") {
@@ -162,16 +163,16 @@ There are a _ton_ of miscellaneous tools, utilities, and glue code for Gradle (a
 
 SGP expects there to be a `libs` version catalog.
 
-The following versions are required to be set the above catalog.
-Their docs can be found in `SlackVersions.kt`.
+The following versions are required to be set the above catalog. Their docs can be found in `KameKamoVersions.kt`.
 - `jdk`
 
 The following plugins are applied by default but can be disabled if you don't need them.
-- Gradle's test retry – `slack.auto-apply.test-retry`
-- Spotless – `slack.auto-apply.spotless`
-- Detekt – `slack.auto-apply.detekt`
-- NullAway – `slack.auto-apply.nullaway`
-- Android Cache Fix – `slack.auto-apply.cache-fix`
+
+- Gradle's test retry – `kamekamo.auto-apply.test-retry`
+- Spotless – `kamekamo.auto-apply.spotless`
+- Detekt – `kamekamo.auto-apply.detekt`
+- NullAway – `kamekamo.auto-apply.nullaway`
+- Android Cache Fix – `kamekamo.auto-apply.cache-fix`
 
 License
 --------

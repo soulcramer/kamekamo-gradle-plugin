@@ -6,10 +6,9 @@ discussion.
 
 ## Development
 
-Check out this repo with Android Studio or IntelliJ. It's a standard gradle project and
-conventional to check out.
+Check out this repo with Android Studio or IntelliJ. It's a standard gradle project and conventional to check out.
 
-The primary project is `slack-plugin`.
+The primary project is `kamekamo-plugin`.
 
 Kotlin should be used for more idiomatic use with Gradle/AGP APIs
 

@@ -39,15 +39,15 @@ dependencyResolutionManagement {
 
     // Snapshots/local go first in order to pre-empty other repos that may contain unscrupulous
     // snapshots.
-    if (hasProperty("slack.gradle.config.enableSnapshots")) {
-      maven("https://oss.sonatype.org/content/repositories/snapshots")
-      maven("https://androidx.dev/snapshots/latest/artifacts/repository")
-      maven("https://oss.jfrog.org/libs-snapshot")
+    if (hasProperty("kamekamo.gradle.config.enableSnapshots")) {
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
+        maven("https://androidx.dev/snapshots/latest/artifacts/repository")
+        maven("https://oss.jfrog.org/libs-snapshot")
     }
 
-    if (hasProperty("slack.gradle.config.enableMavenLocal")) {
-      mavenLocal()
-    }
+      if (hasProperty("kamekamo.gradle.config.enableMavenLocal")) {
+          mavenLocal()
+      }
 
     mavenCentral()
 
@@ -101,15 +101,15 @@ pluginManagement {
 
     // Snapshots/local go first in order to pre-empty other repos that may contain unscrupulous
     // snapshots.
-    if (hasProperty("slack.gradle.config.enableSnapshots")) {
-      maven("https://oss.sonatype.org/content/repositories/snapshots")
-      maven("https://androidx.dev/snapshots/latest/artifacts/repository")
-      maven("https://oss.jfrog.org/libs-snapshot")
-    }
+      if (hasProperty("kamekamo.gradle.config.enableSnapshots")) {
+          maven("https://oss.sonatype.org/content/repositories/snapshots")
+          maven("https://androidx.dev/snapshots/latest/artifacts/repository")
+          maven("https://oss.jfrog.org/libs-snapshot")
+      }
 
-    if (hasProperty("slack.gradle.config.enableMavenLocal")) {
-      mavenLocal()
-    }
+      if (hasProperty("kamekamo.gradle.config.enableMavenLocal")) {
+          mavenLocal()
+      }
 
     mavenCentral()
 
@@ -137,16 +137,17 @@ pluginManagement {
         includeModule("com.diffplug.spotless", "com.diffplug.spotless.gradle.plugin")
         includeModule("io.gitlab.arturbosch.detekt", "io.gitlab.arturbosch.detekt.gradle.plugin")
         includeModule("org.gradle.kotlin.kotlin-dsl", "org.gradle.kotlin.kotlin-dsl.gradle.plugin")
-        includeModule("org.gradle.kotlin", "gradle-kotlin-dsl-plugins")
+          includeModule("org.gradle.kotlin", "gradle-kotlin-dsl-plugins")
+          includeGroup("de.fayard.refreshVersions")
       }
     }
   }
 }
 
-rootProject.name = "slack-gradle-plugin"
+rootProject.name = "kamekamo-gradle-plugin"
 
 // Please keep these in alphabetical order!
-include(":slack-plugin")
+include(":kamekamo-plugin")
 include(":agp-handlers:agp-handler-api")
 include(":agp-handlers:agp-handler-71")
 

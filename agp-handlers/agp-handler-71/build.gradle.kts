@@ -3,7 +3,7 @@ plugins {
   alias(libs.plugins.ksp)
 }
 
-if (hasProperty("SlackRepositoryUrl")) {
+if (hasProperty("KameKamoRepositoryUrl")) {
   apply(plugin = "com.vanniktech.maven.publish")
 }
 
